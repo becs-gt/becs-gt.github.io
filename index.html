@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BECS | Sabor sin límites</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Pop-up Persuasivo -->
+    <div id="sales-popup" class="sales-popup border-purple">
+        <div class="popup-text">
+            <span id="popup-message" class="popup-message">Tu próximo vape está a un clic.</span>
+        </div>
+    </div>
+
+    <!-- Modal de Edad (Glassmorphism) -->
+    <div id="age-modal" class="age-overlay">
+        <div class="age-box">
+            <div class="logo">B<span class="neon-purple">E</span>C<span class="neon-purple">S</span></div>
+            <h2>Acceso Restringido</h2>
+            <p>Este sitio web contiene productos para adultos. Al entrar, afirma tener 18 años o más. BECS es únicamente una plataforma de distribución local.</p>
+            <div class="age-actions">
+                <button onclick="acceptAge()" class="btn-age-enter">Tengo 18 años o más - Entrar</button>
+                <a href="https://google.com" class="btn-age-exit">Soy menor - Salir</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Producto -->
+    <div id="product-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button onclick="closeProductModal()" class="close-btn">✕</button>
+            <div class="modal-grid">
+                <div class="gallery-section">
+                    <div class="main-image" id="modal-main-img"></div>
+                    <div class="thumbnails" id="gallery-thumbs">
+                        <div class="thumb active" onclick="changeImage(this)"></div>
+                        <div class="thumb" onclick="changeImage(this)"></div>
+                        <div class="thumb" onclick="changeImage(this)"></div>
+                    </div>
+                </div>
+                <div class="info-section">
+                    <h2 id="modal-title">Nombre</h2>
+                    <div class="price-wrap">
+                        <del id="modal-old-price">Q0.00</del>
+                        <span id="modal-price" class="clean-price">Q0.00</span>
+                    </div>
+                    <p id="modal-desc" class="desc">Descripción</p>
+                    
+                    <label class="custom-label purple-text">SELECCIONA TU SABOR:</label>
+                    <select id="modal-flavor" class="custom-select">
+                        <!-- Generado por JS -->
+                    </select>
+                    
+                    <button id="modal-add-btn" class="btn-primary full-width">AGREGAR A LA ORDEN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar con botón de carrito Fucsia -->
+    <nav class="navbar">
+        <div class="logo">B<span class="neon-purple">E</span>C<span class="neon-purple">S</span></div>
+        <button class="cart-trigger" onclick="toggleCart()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span id="cart-count">0</span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-text fade-in">
+            <h1>SABOR<br><span class="neon-purple">SIN LÍMITES</span></h1>
+            <p>Dispositivos premium. Entrega inmediata en la capital.</p>
+            <a href="#drop" class="btn-primary">DESBLOQUEAR STOCK</a>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-content neon-purple">
+            SABOR SIN LÍMITES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENTREGAS LOCALES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5% NICOTINA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAKA POCKET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MASKKING HIGH PRO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STOCK INMEDIATO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- Sección Drop -->
+    <main id="drop" class="section drop-section">
+        <div class="section-header fade-in">
+            <span class="badge">PRIMER DROP DISPONIBLE</span>
+            <h2 class="section-title">UNIDADES LIMITADAS</h2>
+            <div class="stopwatch-container">
+                <p>Llevas</p>
+                <div id="stopwatch" class="time-display neon-purple">00:00:00</div>
+                <p id="stopwatch-phrase">sin probar el nuevo drop.</p>
+            </div>
+        </div>
+        
+        <div class="catalog-grid fade-in">
+            <div class="product-cover" onclick="openProductModal('waka')">
+                <div class="cover-img waka-bg"></div>
+                <div class="cover-details">
+                    <h3>Waka Pocket</h3>
+                    <div class="price-wrap">
+                        <del>Q220.00</del>
+                        <span class="clean-price">Q179.00</span>
+                    </div>
+                    <button class="btn-secondary">VER PRODUCTO</button>
+                </div>
+            </div>
+
+            <div class="product-cover" onclick="openProductModal('maskking')">
+                <div class="cover-img maskking-bg"></div>
+                <div class="cover-details">
+                    <h3>Maskking High Pro</h3>
+                    <div class="price-wrap">
+                        <del>Q150.00</del>
+                        <span class="clean-price">Q119.00</span>
+                    </div>
+                    <button class="btn-secondary">VER PRODUCTO</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Beneficios -->
+    <section class="section features-section fade-in">
+        <div class="features-grid">
+            <div class="feature-card border-purple">
+                <h3 class="neon-purple">LOGÍSTICA LOCAL</h3>
+                <p>Pick-up el mismo día en puntos estratégicos o envío en la capital.</p>
+            </div>
+            <div class="feature-card border-purple">
+                <h3 class="neon-purple">CALIDAD GARANTIZADA</h3>
+                <p>Dispositivos sellados. Cero clones, solo producto original.</p>
+            </div>
+            <div class="feature-card border-purple">
+                <h3 class="neon-purple">SELECCIÓN PREMIUM</h3>
+                <p>Importamos únicamente los perfiles de sabor con mayor demanda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comunidad -->
+    <section class="section reviews-section fade-in">
+        <h2 class="section-title">LO QUE DICE EL CREW</h2>
+        <div class="reviews-grid">
+            <div class="review-card hover-purple">
+                <div class="stars neon-cyan">★★★★★</div>
+                <p>"El sabor de Blueberry Mint de Waka está a otro nivel. Excelente servicio local."</p>
+                <span class="author">- Diego M.</span>
+            </div>
+            <div class="review-card hover-purple">
+                <div class="stars neon-cyan">★★★★★</div>
+                <p>"Por fin un lugar que tiene Maskking original. La coordinación fue nítida."</p>
+                <span class="author">- Andrea G.</span>
+            </div>
+            <div class="review-card hover-purple">
+                <div class="stars neon-cyan">★★★★★</div>
+                <p>"Recomendados. Compré el Waka y ha durado un montón. Excelentes precios."</p>
+                <span class="author">- Carlos S.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section fade-in">
+        <h2 class="section-title">INFO & FAQ</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>¿Cómo funciona el Pick-up BECS?</summary>
+                <div class="faq-body"><p>Es nuestro método de entrega gratuita. Al procesar tu orden, coordinamos el punto exacto de encuentro.</p></div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Cuánto tiempo tarda el envío a domicilio?</summary>
+                <div class="faq-body"><p>En la capital se entrega el mismo día. Departamentales toman de 24 a 48 horas vía Guatex.</p></div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section crew-section fade-in">
+        <div class="crew-box border-purple-hover">
+            <h2>ÚNETE AL <span class="neon-purple">CREW</span></h2>
+            <p>Ingresa a la lista privada. Códigos de descuento, restocks y accesos anticipados.</p>
+            <div class="form-group">
+                <input type="email" id="crew-email" placeholder="Tu correo electrónico">
+                <button onclick="joinCrew()" id="btn-crew" class="btn-primary">ENTRAR</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="logo">B<span class="neon-purple">E</span>C<span class="neon-purple">S</span></div>
+            <div class="socials">
+                <a href="https://www.instagram.com/becs.gt?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==">INSTAGRAM</a>
+                <a href="#">TIKTOK</a>
+                <a href="https://wa.me/50259378835">WHATSAPP</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 BECS. Sabor sin límites.</p></div>
+    </footer>
+
+    <!-- Sidebar Carrito -->
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>TU ORDEN</h2>
+            <button onclick="toggleCart()" class="close-btn">✕</button>
+        </div>
+        
+        <div id="empty-cart" class="empty-state">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="var(--neon-purple)" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <p>EL CARRITO ESTÁ VACÍO</p>
+        </div>
+        
+        <div id="cart-items" class="cart-items-list"></div>
+        
+        <div class="sidebar-footer">
+            <div id="checkout-data" class="checkout-data hidden">
+                <input type="text" id="client-name" class="custom-input" placeholder="Nombre y Apellido">
+                <input type="tel" id="client-phone" class="custom-input" placeholder="Número de WhatsApp">
+                <input type="text" id="client-address" class="custom-input hidden" placeholder="Dirección exacta o Zona (Ej: Zona 10)">
+            </div>
+
+            <label class="custom-label purple-text">LOGÍSTICA DE ENTREGA:</label>
+            <select id="shipping" onchange="updateTotal()" class="custom-select" disabled>
+                <option value="0">Pick-up BECS (Gratis)</option>
+                <option value="30">Envío Capital (+Q30)</option>
+                <option value="40">Envío Departamental (+Q40)</option>
+            </select>
+            
+            <div class="total-wrap">
+                <span>TOTAL</span>
+                <span id="cart-total" class="clean-price">Q0.00</span>
+            </div>
+            
+            <button id="btn-checkout" onclick="sendWhatsApp()" class="btn-whatsapp" disabled>PROCESAR ORDEN</button>
+            <button onclick="toggleCart()" class="btn-secondary full-width border-purple-hover">SEGUIR COMPRANDO</button>
+        </div>
+    </div>
+    <!-- Modal para Ampliar Imagen -->
+<div id="zoom-modal" class="modal-overlay hidden" onclick="closeZoom()" style="z-index: 4000; cursor: zoom-out;">
+    <div style="position: relative; max-width: 90vw; max-height: 90vh;">
+        <img id="zoom-img-tag" src="" style="width: 100%; height: auto; max-height: 85vh; border-radius: 12px; object-fit: contain;" alt="Zoom Producto">
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
