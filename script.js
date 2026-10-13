@@ -13,7 +13,7 @@ const productDB = {
             { file: 'blueberry2.webp', flavor: 'Blueberry Mint' }, // Imagen extra de ángulo
             { file: 'grape.webp', flavor: 'Grape' },
             { file: 'grape2.webp', flavor: 'Grape' },
-            { file: 'cherry.webp', flavor: 'Cherry Bomb' },
+            { file: 'Cherry.webp', flavor: 'Cherry Bomb' },
             { file: 'miami.webp', flavor: 'Miami Mint' },
         ],
         desc: '6,000 Puffs | 5% Nicotina. El dispositivo recargable definitivo con retención de sabor extrema.',
