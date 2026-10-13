@@ -191,13 +191,13 @@ body { background-color: var(--bg-main); color: var(--text-main); overflow-x: hi
 
 /* IMÁGENES DE LOS PRODUCTOS */
 .waka-bg {
-    background-image: url('assets/portada1.jpeg');
+    background-image: url('portada1.jpeg');
     background-size: cover;
     background-position: center;
 }
 
 .maskking-bg {
-    background-image: url('assets/portada2.jpeg');
+    background-image: url('portada2.jpeg');
     background-size: cover;
     background-position: center;
 }
