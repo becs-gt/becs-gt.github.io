@@ -1,5 +1,5 @@
 // Número oficial actualizado
-const WHATSAPP_NUMBER = "50259378835"; 
+const WHATSAPP_NUMBER = "50236670878"; 
 let cart = [];
 
 // BASE DE DATOS ACTUALIZADA CON VÍNCULO IMAGEN-SABOR
